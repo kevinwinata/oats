@@ -1,4 +1,6 @@
 Oats::Application.routes.draw do
+  get "dummy_pages/dummy"
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

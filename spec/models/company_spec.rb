@@ -30,6 +30,7 @@ describe Company do
   it { should respond_to(:password) }
   it { should respond_to(:password_confirmation) }
   it { should respond_to(:authenticate) }
+  it { should respond_to(:office) }
 
   it { should be_valid }
 

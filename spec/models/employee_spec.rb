@@ -15,10 +15,11 @@
 require 'spec_helper'
 
 describe Employee do
-  before do 
-  	@employee = Employee.new(email: "oteng@email.com", name: "Mario", division: "IT",
-  							 mobile_number: "2378947283", password: "1234567", password_confirmation: "1234567")
-  end
+  
+  let(:company) { FactoryGirl.create(:company) }
+  let(:office) { company.offices.build(latitude:-90,longitude:-180,name:"Blah") }
+  before { @employee = office.employees.build(email: "oteng@email.com", name: "Mario", division: "IT",
+  							 mobile_number: "2378947283", password: "1234567", password_confirmation: "1234567") }
 
   subject { @employee }
 
@@ -28,6 +29,9 @@ describe Employee do
   it { should respond_to(:password) }
   it { should respond_to(:password_confirmation) }
   it { should respond_to(:authenticate) }
+  it { should respond_to(:office_id) }
+  it { should respond_to(:office) }
+  its(:office) { should == office }
 
   it { should be_valid }
 

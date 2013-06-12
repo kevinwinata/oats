@@ -11,6 +11,7 @@ describe Office do
   it { should respond_to(:name) }
   it { should respond_to(:company_id) }
   it { should respond_to(:company) }
+  it { should respond_to(:employees) }
   its(:company) { should == company }
 
   it { should be_valid }

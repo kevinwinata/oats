@@ -73,6 +73,9 @@ GEM
       railties (>= 3.2.0, < 5.0)
       thor (~> 0.14)
     json (1.8.0)
+    json_spec (1.1.1)
+      multi_json (~> 1.0)
+      rspec (~> 2.0)
     mail (2.5.4)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
@@ -170,6 +173,7 @@ DEPENDENCIES
   factory_girl_rails (= 4.1.0)
   faker (= 1.0.1)
   jquery-rails (= 2.0.2)
+  json_spec
   pg (= 0.12.2)
   rails (= 3.2.13)
   rspec-rails (= 2.11.0)

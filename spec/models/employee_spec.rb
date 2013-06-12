@@ -16,8 +16,7 @@ require 'spec_helper'
 
 describe Employee do
   
-  let(:company) { FactoryGirl.create(:company) }
-  let(:office) { company.offices.build(latitude:-90,longitude:-180,name:"Blah") }
+  let(:office) { FactoryGirl.create(:office) }
   before { @employee = office.employees.build(email: "oteng@email.com", name: "Mario", division: "IT",
   							 mobile_number: "2378947283", password: "1234567", password_confirmation: "1234567") }
 

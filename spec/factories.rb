@@ -13,5 +13,6 @@ FactoryGirl.define do
     latitude -90
     longitude -180
     name "Blah"
+    company
   end
 end

@@ -89,6 +89,8 @@ GEM
     pg (0.12.2)
     pg (0.12.2-x86-mingw32)
     polyglot (0.3.3)
+    rabl (0.8.5)
+      activesupport (>= 2.3.14)
     rack (1.4.5)
     rack-cache (1.2)
       rack (>= 0.4)
@@ -179,6 +181,7 @@ DEPENDENCIES
   jquery-rails (= 2.0.2)
   json_spec
   pg (= 0.12.2)
+  rabl
   rails (= 3.2.13)
   rails-api
   rspec-rails (= 2.11.0)

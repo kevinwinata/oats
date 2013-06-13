@@ -13,7 +13,7 @@
 #
 
 class Employee < ActiveRecord::Base
-  attr_accessible :division, :email, :mobile_number, :name, :role, :password, :password_confirmation
+  attr_accessible :name, :email,  :division, :mobile_number, :password, :password_confirmation, :office_id
 
   has_secure_password
 
@@ -21,9 +21,9 @@ class Employee < ActiveRecord::Base
   belongs_to :office
 
   before_save { |employee| employee.email = email.downcase }
+  before_save :create_remember_token
 
   validates :office_id, presence: true
-  
   validates :name, presence: true, length: { maximum: 50 }
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   validates :email, presence: true, format: { with: VALID_EMAIL_REGEX },
@@ -31,4 +31,10 @@ class Employee < ActiveRecord::Base
   validates :mobile_number, uniqueness: true
   validates :password, presence: true, length: { minimum: 6 }
   validates :password_confirmation, presence: true
+
+  private
+
+    def create_remember_token
+      self.remember_token = SecureRandom.urlsafe_base64
+    end
 end

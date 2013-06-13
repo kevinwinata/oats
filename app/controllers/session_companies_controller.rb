@@ -16,5 +16,7 @@ class SessionCompaniesController < ApplicationController
   end
 
   def destroy
+    sign_out
+    redirect_to '/company/signup'
   end
 end

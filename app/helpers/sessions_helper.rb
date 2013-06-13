@@ -16,4 +16,9 @@ module SessionsHelper
   def current_company
     @current_company ||= Company.find_by_remember_company(cookies[:remember_company])
   end
+
+  def sign_out
+    self.current_company = nil
+    cookies.delete(:remember_company)
+  end
 end

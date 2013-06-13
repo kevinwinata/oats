@@ -4,12 +4,12 @@ class CompaniesController < ApplicationController
   include ActionController::Cookies
   
   def new
+    @company = Company.new
   end
 
   def create
-  @company = Company.new(params[:company])
-  @company.save
-end
+  	@company = Company.new(params[:company])
+  	@company.save
   end
 
   def index

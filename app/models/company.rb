@@ -21,6 +21,7 @@ class Company < ActiveRecord::Base
 
   before_save { |company| company.username = username.downcase }
   before_save { |company| company.email = email.downcase }
+  before_save :create_remember_company
 
   validates :username, presence: true, uniqueness: { case_sensitive: false }, length: { maximum: 25 }
   validates :name, presence: true, length: { maximum: 50 }
@@ -29,4 +30,10 @@ class Company < ActiveRecord::Base
                     uniqueness: { case_sensitive: false }
   validates :password, presence: true, length: { minimum: 6 }
   validates :password_confirmation, presence: true
+
+  private
+
+    def create_remember_company
+      self.remember_company = SecureRandom.urlsafe_base64
+    end
 end

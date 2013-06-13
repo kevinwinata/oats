@@ -5,8 +5,10 @@ class CompaniesController < ApplicationController
   end
 
   def create
-  	@company = Company.new(params[:company])
-  	if @company.save
+    @company = Company.new(params[:company])
+    if @company.save
+      sign_in @company
+      flash[:success] = "Welcome to the Sample App!"
       redirect_to @company
     else
       render 'new'

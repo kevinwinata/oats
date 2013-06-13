@@ -1,7 +1,10 @@
 Oats::Application.routes.draw do
   resources :companies
-
+  resources :session_companies, only: [:new, :create, :destroy]
   match '/company/signup',  to: 'companies#new'
+  match '/company/signin',  to: 'session_companies#new'
+  match '/company/signout',  to: 'session_companies#destroy', via: :delete
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

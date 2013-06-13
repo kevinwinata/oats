@@ -30,6 +30,7 @@ describe Employee do
   it { should respond_to(:authenticate) }
   it { should respond_to(:office_id) }
   it { should respond_to(:office) }
+  it { should respond_to(:worktimes) }
   its(:office) { should == office }
 
   it { should be_valid }

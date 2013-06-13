@@ -17,6 +17,7 @@ class Employee < ActiveRecord::Base
 
   has_secure_password
 
+  has_many :worktimes
   belongs_to :office
 
   before_save { |employee| employee.email = email.downcase }

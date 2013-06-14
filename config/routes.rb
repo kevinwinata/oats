@@ -3,6 +3,7 @@ Oats::Application.routes.draw do
   resources :companies
   resources :session_employees, only: [:new, :create, :destroy]
   resources :session_companies, only: [:new, :create, :destroy]
+  resources :offices, only: [:create, :destroy]
   match '/company/signup',  to: 'companies#new'
   match '/company/signin',  to: 'session_companies#new'
   match '/company/signout',  to: 'session_companies#destroy', via: :delete

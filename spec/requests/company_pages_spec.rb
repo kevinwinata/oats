@@ -69,4 +69,28 @@ describe "company pages" do
       specify { company.reload.name.should  == "Adriel" }
     end
   end
+
+  describe "profile page" do
+    let(:company) { FactoryGirl.create(:company) }
+    before do
+      visit '/company/signin'
+      fill_in "Username",    with: company.username
+      fill_in "Password", with: company.password
+      click_button "Sign in"
+      cookies[:remember_company] = company.remember_company
+      @o1 = company.offices.build(latitude:-90,longitude:-180,name:"Blah")
+      @o1.save
+      @o2 = company.offices.build(latitude:-90,longitude:-180,name:"Shit")
+      @o2.save
+      visit company_path(company)
+    end
+
+    it { should have_content(company.username) }
+
+    describe "office" do
+      it { should have_content(@o1.name) }
+      it { should have_content(@o2.name) }
+      it { should have_content(company.offices.count) }
+    end
+  end
 end

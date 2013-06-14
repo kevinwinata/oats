@@ -1,8 +1,8 @@
 FactoryGirl.define do
   factory :company do
-    username "Oteng"
+    username "shit"
     name "Mario Orlando"
-    email "mario@example.com" 
+    email "maria@example.com" 
     contact "0819812492174"
     address "Pisang 21"
     password "1234567"

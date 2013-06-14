@@ -21,6 +21,13 @@ module CompanySessionsHelper
     company == company_current_user
   end
 
+  def signed_in_company
+    unless company_signed_in?
+      store_location
+      redirect_to '/company/signin'
+    end
+  end
+
   def company_sign_out
     self.company_current_user = nil
     cookies.delete(:remember_company)

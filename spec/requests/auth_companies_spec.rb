@@ -62,6 +62,19 @@ describe "Authentication" do
         end
       end
 
+      describe "in the Offices controller" do
+
+        describe "submitting to the create action" do
+          before { post offices_path }
+          specify { response.should redirect_to('/company/signin') }
+        end
+
+        describe "submitting to the destroy action" do
+          before { delete office_path(FactoryGirl.create(:office)) }
+          specify { response.should redirect_to('/company/signin') }
+        end
+      end
+
       describe "in the Companies controller" do
 
         describe "visiting the edit page" do

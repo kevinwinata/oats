@@ -18,7 +18,7 @@ class Company < ActiveRecord::Base
   attr_accessible :address, :contact, :email, :name, :username,  :password, :password_confirmation
   has_secure_password
 
-  has_many :offices
+  has_many :offices, dependent: :destroy
 
   before_save { |company| company.username = username.downcase }
   before_save { |company| company.email = email.downcase }

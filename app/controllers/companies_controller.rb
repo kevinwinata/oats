@@ -22,6 +22,7 @@ class CompaniesController < ApplicationController
 
   def show
     @company = Company.find(params[:id])
+    @offices = @company.offices
   end
 
   def edit
@@ -38,13 +39,6 @@ class CompaniesController < ApplicationController
   end
 
   private
-
-    def signed_in_company
-      unless company_signed_in?
-        store_location
-        redirect_to '/company/signin' 
-      end
-    end
 
     def correct_company
       @company = Company.find(params[:id])

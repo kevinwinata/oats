@@ -223,6 +223,78 @@ p {
 	margin-bottom: 30px;
 }
 
+/* Home page */
+
+#logo_home{ 
+	width: 500px;
+	margin-top: 30px;
+	margin-bottom: 80px;
+}
+
+#home_content{
+	height: 100%;
+	width: 100%;
+}
+
+#home_content_left{
+	width: 510px;
+	float: left;
+	height: auto;
+	margin-left: -200px;
+}
+
+#home_content_right{
+	width: 900px;
+	float: right;
+	margin-right: -280px;
+}
+
+#building_home{
+	margin-top: 10%;
+	size: 120%;
+}
+
+.orange_button {
+	color: #fef4e9;
+	border: solid 1px #da7c0c;
+	border-radius: 10px;
+	background: #f78d1d;
+	background: -webkit-gradient(linear, left top, left bottom, from(#faa51a), to(#f47a20));
+	background: -moz-linear-gradient(top,  #faa51a,  #f47a20);
+	filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#faa51a', endColorstr='#f47a20');
+	color: black;
+	font-size: 150%;
+	width: 300px;
+	margin-right: auto;
+	margin-left: auto;
+	padding-top: 10px;
+}
+
+.orange_button:hover {
+	background: #f47c20;
+	background: -webkit-gradient(linear, left top, left bottom, from(#f88e11), to(#f06015));
+	background: -moz-linear-gradient(top,  #f88e11,  #f06015);
+	filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#f88e11', endColorstr='#f06015');
+	color: black;
+}
+.orange_button:active {
+	color: #fcd3a5;
+	background: -webkit-gradient(linear, left top, left bottom, from(#f47a20), to(#faa51a));
+	background: -moz-linear-gradient(top,  #f47a20,  #faa51a);
+	filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#f47a20', endColorstr='#faa51a');
+	color: black;
+}
+
+#company_login{
+	font-weight: normal;
+	font-size: 150%;
+	padding : 10px;
+	width: 150px;
+	margin-top: 30px;
+	margin-right: auto;
+	margin-left: auto;
+}
+
 /* About page*/
 
 #about_content {

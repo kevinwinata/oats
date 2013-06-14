@@ -5,6 +5,8 @@ Oats::Application.routes.draw do
 
   get "dynamic_pages/company_login"
 
+  get "dynamic_pages/employee_home"
+
   get "static_pages/home"
   get "static_pages/about"
   get "static_pages/contact"

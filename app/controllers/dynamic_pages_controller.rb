@@ -7,4 +7,7 @@ class DynamicPagesController < ApplicationController
 
   def company_login
   end
+
+  def employee_home
+  end
 end

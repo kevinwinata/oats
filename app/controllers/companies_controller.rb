@@ -1,5 +1,6 @@
 class CompaniesController < ApplicationController
-  before_filter :company_signed_in, only: [:edit, :update, :show]
+  before_filter :signed_in_company, only: [:edit, :update, :show]
+  before_filter :correct_company,   only: [:edit, :update]
 
   def new
     @company = Company.new
@@ -24,11 +25,10 @@ class CompaniesController < ApplicationController
   end
 
   def edit
-    @company = Company.find(params[:id])
   end
 
+
   def update
-    @company = Company.find(params[:id])
     if @company.update_attributes(params[:company])
       company_sign_in @company
       redirect_to @company
@@ -39,7 +39,15 @@ class CompaniesController < ApplicationController
 
   private
 
-    def company_signed_in
-      redirect_to '/company/signin' unless company_signed_in?
+    def signed_in_company
+      unless company_signed_in?
+        store_location
+        redirect_to '/company/signin' 
+      end
+    end
+
+    def correct_company
+      @company = Company.find(params[:id])
+      redirect_to(@company_current_user) unless company_current_user?(@company)
     end
 end

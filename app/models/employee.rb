@@ -16,7 +16,7 @@
 #
 
 class Employee < ActiveRecord::Base
-  attr_accessible :name, :email,  :division, :mobile_number, :password, :password_confirmation, :office_id
+  attr_accessible :name, :email,  :division, :mobile_number, :password, :password_confirmation, :office_id, :role
 
   has_secure_password
 

@@ -3,6 +3,7 @@ class ApplicationController < ActionController::Base
 	include EmployeeSessionsHelper
 	include CompanySessionsHelper
 
+
   # Force signout to prevent CSRF attacks
   def handle_unverified_request
     employee_sign_out

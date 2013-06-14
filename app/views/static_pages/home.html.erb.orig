@@ -1,4 +1,7 @@
+<<<<<<< HEAD
 <% provide(:title, 'Home') %>
+=======
+>>>>>>> 467e94d3ecf726bad49d57f429822d4395bf57e6
 <% provide(:description, 'static') %>
 <div class="center">
 	<h1></h1>

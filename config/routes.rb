@@ -1,4 +1,10 @@
 Oats::Application.routes.draw do
+  get "dynamic_pages/login"
+
+  get "dynamic_pages/register"
+
+  get "dynamic_pages/company_login"
+
   get "static_pages/home"
   get "static_pages/about"
   get "static_pages/contact"

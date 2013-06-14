@@ -7,10 +7,10 @@
     <%= csrf_meta_tags %>
   </head>
   <body>
-    <%= static_page(yield(:description)) %>
+    <%= static_page_header(yield(:description)) %>
     <div class="container">
       <%= yield %>
     </div>
-    <%= render 'layouts/footer' %>
+    <%= static_page_footer(yield(:description)) %>
   </body>
 </html>

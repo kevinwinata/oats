@@ -1,0 +1,17 @@
+<% provide(:title, 'Login') %>
+<% provide(:description, 'none') %>
+<div>
+	<h1>Employee Login</h1>
+</div>
+<div class="login_form">
+	<%= form_for(:session, url: "#") do |f| %>
+
+    <%= f.label :email %>
+    <%= f.text_field :email %>
+
+    <%= f.label :password %>
+    <%= f.password_field :password %>
+
+    <%= f.submit "Login", class: "orange_button login_button" %>
+    <% end %>
+</div>

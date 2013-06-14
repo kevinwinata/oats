@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130613082935) do
+ActiveRecord::Schema.define(:version => 20130614062342) do
 
   create_table "companies", :force => true do |t|
     t.string   "username"
@@ -34,12 +34,12 @@ ActiveRecord::Schema.define(:version => 20130613082935) do
     t.string   "mobile_number"
     t.string   "email"
     t.string   "division"
-    t.boolean  "role"
-    t.datetime "created_at",      :null => false
-    t.datetime "updated_at",      :null => false
+    t.datetime "created_at",                         :null => false
+    t.datetime "updated_at",                         :null => false
     t.string   "password_digest"
     t.integer  "office_id"
     t.string   "remember_token"
+    t.boolean  "role",            :default => false
   end
 
   add_index "employees", ["email"], :name => "index_employees_on_email", :unique => true

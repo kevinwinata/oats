@@ -39,6 +39,10 @@ module SessionsHelper
     @employee_current_user ||= Employee.find_by_remember_token(cookies[:remember_token])
   end
 
+  def employee_current_user?(employee)
+    employee == employee_current_user
+  end
+
   def employee_sign_out
     self.employee_current_user = nil
     cookies.delete(:remember_token)

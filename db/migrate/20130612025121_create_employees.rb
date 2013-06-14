@@ -5,7 +5,6 @@ class CreateEmployees < ActiveRecord::Migration
       t.string :mobile_number
       t.string :email
       t.string :division
-      t.boolean :role
 
       t.timestamps
     end

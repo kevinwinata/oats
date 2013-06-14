@@ -11,7 +11,6 @@ Oats::Application.routes.draw do
   match '/employee/signup', to: 'employees#new'
   match '/employee/signin',  to: 'session_employees#new'
   match '/employee/signout', to: 'session_employees#destroy', via: :delete
-  match '/company/signup',  to: 'companies#new'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

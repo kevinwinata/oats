@@ -1,0 +1,9 @@
+<h1>All users</h1>
+
+<ul class="employees">
+  <% @companies.employees.each do |employees| %>
+    <li>
+      <%= link_to employees.name, employees %>
+    </li>
+  <% end %>
+</ul>

@@ -8,6 +8,10 @@ class EmployeesController < ApplicationController
   	@employee = Employee.find(params[:id])
   end
 
+  def index
+    @employee = Employee.all
+  end
+
   def create
     @employee = Employee.new(params[:employee])
     if @employee.save

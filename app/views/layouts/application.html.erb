@@ -7,7 +7,7 @@
     <%= csrf_meta_tags %>
   </head>
   <body>
-    <%= static_page_header(yield(:description)) %>
+    <%= static_page_header(yield(:description), yield(:role)) %>
     <div class="container">
       <%= yield %>
     </div>

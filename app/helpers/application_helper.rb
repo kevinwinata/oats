@@ -1,8 +1,14 @@
 module ApplicationHelper
 
-	def static_page_header(desc)
+	def static_page_header(desc, role)
   		if desc == 'dynamic'
-  			render 'layouts/header'
+  			if role == 'company'
+	  			render 'layouts/header'
+  			elsif role == 'employee'
+  				render 'layouts/header_employee'
+  			else role
+  				render 'layouts/header_HR'
+  			end
   		else
     		
   		end

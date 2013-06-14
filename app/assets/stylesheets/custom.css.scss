@@ -249,10 +249,29 @@ p {
 	width: 900px;
 	float: right;
 	margin-right: -280px;
+	margin-top: -10px;
+}
+
+#register_button{
+	border-left: solid 2px black;
+	border-bottom: solid 2px black;
+	background: #435FFF;
+	float: right;
+	margin-right: 100px;
+	margin-top: 0px;
+	height: 30px;
+	width: 100px;
+	padding-top: 8px;
+	border-radius: 3px;
+	font-weight:bold;
+	a{
+		color: white;
+		text-decoration: none;
+	}
 }
 
 #building_home{
-	margin-top: 10px;
+	margin-top: 20px;
 	size: 100%;
 }
 

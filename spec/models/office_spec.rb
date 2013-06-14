@@ -1,3 +1,16 @@
+# == Schema Information
+#
+# Table name: offices
+#
+#  id         :integer          not null, primary key
+#  name       :string(255)
+#  longitude  :float
+#  latitude   :float
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#  company_id :integer
+#
+
 require 'spec_helper'
 
 describe Office do

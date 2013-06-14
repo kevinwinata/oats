@@ -1,5 +1,5 @@
 class CompaniesController < ApplicationController
-  before_filter :signed_in_company, only: [:edit, :update]
+  before_filter :company_signed_in, only: [:edit, :update, :show]
 
   def new
     @company = Company.new
@@ -8,8 +8,7 @@ class CompaniesController < ApplicationController
   def create
     @company = Company.new(params[:company])
     if @company.save
-      sign_in @company
-      flash[:success] = "Welcome to the Sample App!"
+      company_sign_in @company
       redirect_to @company
     else
       render 'new'
@@ -31,7 +30,7 @@ class CompaniesController < ApplicationController
   def update
     @company = Company.find(params[:id])
     if @company.update_attributes(params[:company])
-      sign_in @company
+      company_sign_in @company
       redirect_to @company
     else
       render 'edit'
@@ -40,7 +39,7 @@ class CompaniesController < ApplicationController
 
   private
 
-    def signed_in_company
-      redirect_to '/company/signin', notice: "Please sign in." unless signed_in?
+    def company_signed_in
+      redirect_to '/company/signin' unless company_signed_in?
     end
 end

@@ -15,11 +15,10 @@ describe "Authentication" do
     before { visit '/company/signin' }
 
     describe "with invalid information" do
-      before { click_button "Sign in" }
-    end
-
-    describe "with invalid information" do
-      before { click_button "Sign in" }
+      before do
+        click_button "Sign in"
+      end
+      it { should have_content("Sign in") }
     end
 
     describe "with valid information" do
@@ -37,7 +36,27 @@ describe "Authentication" do
 
       describe "followed by signout" do
         before { click_link "Sign out" }
-        it { should have_link('Sign in') }
+        it { should have_content("Sign in") }
+      end
+    end
+  end
+
+  describe "authorization" do
+
+    describe "for non-signed-in companies" do
+      let(:company) { FactoryGirl.create(:company) }
+
+      describe "in the Companies controller" do
+
+        describe "visiting the edit page" do
+          before { visit edit_company_path(company) }
+          it { should have_content('Sign in') }
+        end
+
+        describe "submitting to the update action" do
+          before { put company_path(company) }
+          specify { response.should redirect_to('/company/signin') }
+        end
       end
     end
   end

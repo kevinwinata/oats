@@ -30,4 +30,43 @@ describe "company pages" do
       end
     end
   end
+
+  describe "edit" do
+    let(:company) { FactoryGirl.create(:company) }
+    before do
+      visit '/company/signin'
+      fill_in "Username",    with: company.username
+      fill_in "Password", with: company.password
+      click_button "Sign in"
+      cookies[:remember_company] = company.remember_company
+      visit edit_company_path(company)
+    end
+
+    describe "page" do
+      it { should have_selector('h1',    text: "Update company profile") }
+      it { should have_selector('title', text: "Edit company") }
+    end
+
+    describe "with invalid information" do
+      before { click_button "Save changes" }
+        it { should have_selector('h1',    text: "Update company profile") }
+        it { should have_selector('title', text: "Edit company") }
+    end
+
+    describe "with valid information" do
+      before do
+        fill_in "Address",          with: "sdkfklasfjaofjioa"
+        fill_in "Contact",          with: "893437"
+        fill_in "Email",            with: "sun@dragoon.com"
+        fill_in "Name",             with: "Adriel"
+        fill_in "Password",         with: "4561237"
+        fill_in "Confirm Password", with: "4561237"
+        click_button "Save changes"
+      end
+
+      it { should have_content("Adriel") }
+      it { should have_link('Sign out') }
+      specify { company.reload.name.should  == "Adriel" }
+    end
+  end
 end

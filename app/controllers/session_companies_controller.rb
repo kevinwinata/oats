@@ -11,12 +11,12 @@ class SessionCompaniesController < ApplicationController
     else
       flash.now[:error] = 'Invalid email/password combination'
 
-      redirect_to '/companies'
+      redirect_to '/company/signin'
     end
   end
 
   def destroy
     sign_out
-    redirect_to '/company/signup'
+    redirect_to '/company/signin'
   end
 end

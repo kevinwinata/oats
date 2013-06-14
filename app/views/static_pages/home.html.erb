@@ -1,15 +1,15 @@
-<% provide(:description, 'static') %>
+<% provide(:title, 'Home') %>
 <% provide(:description, 'static') %>
 <div class="center">
 	<h1></h1>
 	<div id="home_content">
 		<div id="home_content_left">
 			<%= image_tag("logo.png", alt: "Oats", id:"logo_home") %>
-			<div class="orange_button">
-				<h2>Employee Login</h2>
+			<div class="orange_button", onclick="getLocation()">
+				<a href="#"><h2>Employee Login</h2></a>
 			</div>
 			<div class="orange_button", id="company_login">
-				Company Login
+				<a href="#">Company Login</a>
 			</div>
 		</div>
 		<div id="home_content_right">

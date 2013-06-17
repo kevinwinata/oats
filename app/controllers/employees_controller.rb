@@ -1,5 +1,5 @@
 class EmployeesController < ApplicationController
-  before_filter :signed_in_employee, only: [:edit, :update]
+  before_filter :signed_in_employee, only: [:edit, :update, :index]
   before_filter :correct_employee,   only: [:edit, :update]
   before_filter :hr_employee,     only: :index
 
@@ -60,7 +60,7 @@ class EmployeesController < ApplicationController
 
   def destroy
     Employee.find(params[:id]).destroy
-    redirect_to company_current_user
+    redirect_to :back
   end
 
   private
@@ -79,6 +79,6 @@ class EmployeesController < ApplicationController
     end
 
     def hr_employee
-      redirect_to('/employee/signin') unless employee_current_user.role?
+      redirect_to(@employee_current_user) unless employee_current_user.role?
     end
 end

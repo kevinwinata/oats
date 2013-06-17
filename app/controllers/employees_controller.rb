@@ -38,26 +38,24 @@ class EmployeesController < ApplicationController
 
   def edit
     @employee = Employee.find(params[:id])
+    cookies[:url] = request.fullpath
   end
 
   def update
     @employee = Employee.find(params[:id])
-    if @employee.update_attributes(params[:employee].except(:role))
-      employee_sign_in @employee
-      redirect_to @employee
+    if cookies[:url].include?'/company/edit_employee'
+      @employee.update_attribute('role',params[:employee][:role])
+      @employee.update_attribute('office_id',params[:employee][:office_id])
+      redirect_to company_current_user
     else
-      render 'edit'
+      if @employee.update_attributes(params[:employee].except(:role))
+        employee_sign_in @employee
+        redirect_to @employee
+      else
+        render 'edit'
+      end
     end
-  end
-
-  def update_all
-    @employee = Employee.find(params[:id])
-    if @employee.update_attributes(params[:employee])
-      employee_sign_in @employee
-      redirect_to @employee
-    else
-      render 'edit'
-    end
+    cookies.delete :url
   end
 
   def destroy
@@ -68,12 +66,16 @@ class EmployeesController < ApplicationController
   private
 
     def signed_in_employee
-      redirect_to '/employee/signin' unless employee_signed_in?
+      unless company_signed_in?
+        redirect_to '/employee/signin' unless employee_signed_in?  
+      end
     end
 
     def correct_employee
       @employee = Employee.find(params[:id])
-      redirect_to(@employee_current_user) unless employee_current_user?(@employee)
+      unless company_signed_in?
+        redirect_to(@employee_current_user) unless employee_current_user?(@employee)
+      end
     end
 
     def hr_employee

@@ -44,6 +44,11 @@ class CompaniesController < ApplicationController
     cookies[:url] = request.fullpath
   end
 
+  def edit_employee
+    @employee = Employee.find(params[:id])
+    cookies[:url] = request.fullpath
+  end
+
   private
 
     def correct_company

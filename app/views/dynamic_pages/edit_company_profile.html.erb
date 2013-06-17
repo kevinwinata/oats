@@ -1,0 +1,46 @@
+<% provide(:title, 'Edit Company Profile') %>
+<% provide(:description, 'dynamic') %>
+<% provide(:role, 'company') %>
+
+<div class="sub-title">
+	<div id="sub-title-bigtext">
+		Edit Company Profile
+	</div>
+	<div>
+		<a href="#">edit</a>
+	</div>
+</div>
+<div class="company_profile_content">
+	<%= form_for(:session, url: "#") do |f| %>
+	<div class="edit_company_profile_component">	
+		<%= f.label :Name, :class=>"edit_label_company_profile" %>
+		<div class="edit_symbol_company_profile">:</div>
+		<div id= "edit_company_profile_name">
+    		<%= f.text_field :Name, :id=>"edit_company_profile_textfield" %>	
+    	</div>
+	</div>
+	<div class="edit_company_profile_component">
+		<%= f.label :Address, :class=>"edit_label_company_profile" %>
+		<div class="edit_symbol_company_profile">:</div>
+		<div id= "edit_company_profile_address">
+			<%= f.text_field :Address, :id=>"edit_company_profile_textfield" %>	
+		</div>
+	</div>
+
+	<div class="edit_company_profile_component">
+		<%= f.label :Contact, :class=>"edit_label_company_profile" %>
+		<div class="edit_symbol_company_profile">:</div>
+		<div id= "edit_company_profile_contact">
+			<%= f.text_field :Contact, :id=>"edit_company_profile_textfield" %>	
+		</div>
+	</div>
+
+	<div class="edit_company_profile_component">
+		<div class="edit_label_company_profile">Bill</div>
+		<div class="edit_symbol_company_profile">:</div>
+		<div id= "edit_company_profile_bill">Rp xxxx</div>
+	</div>
+
+	 <%= f.submit "Save", class: "orange_button", id: "edit_company_profile_save" %>
+	<% end %>
+</div>

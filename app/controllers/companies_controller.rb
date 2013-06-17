@@ -23,6 +23,7 @@ class CompaniesController < ApplicationController
   def show
     @company = Company.find(params[:id])
     @offices = @company.offices
+    @employees = Employee.where("employees.office_id IN (SELECT offices.id FROM offices WHERE (company_id = ?))", @company.id)
   end
 
   def edit

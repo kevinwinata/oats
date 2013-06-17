@@ -5,4 +5,10 @@
 <%= render @offices %>
 <% end %>
 <br/>
+
+<% if @employees.any? %>
+<%= @employees.count %>
+<%= render @employees %>
+<% end %>
+<br/>
 <%= link_to "Sign out", '/company/signout', method: "delete" %>

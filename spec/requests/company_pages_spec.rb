@@ -80,8 +80,12 @@ describe "company pages" do
       cookies[:remember_company] = company.remember_company
       @o1 = company.offices.build(latitude:-90,longitude:-180,name:"Blah")
       @o1.save
+      @e1 = @o1.employees.build(email: "oteng@email.com", name: "Mario", division: "IT", mobile_number: "2378947283", password: "1234567", password_confirmation: "1234567")
+      @e1.save
       @o2 = company.offices.build(latitude:-90,longitude:-180,name:"Shit")
       @o2.save
+      @e2 = @o2.employees.build(email: "abc@email.com", name: "Abc", division: "IT", mobile_number: "237894283", password: "1234567", password_confirmation: "1234567")
+      @e2.save
       visit company_path(company)
     end
 
@@ -91,6 +95,12 @@ describe "company pages" do
       it { should have_content(@o1.name) }
       it { should have_content(@o2.name) }
       it { should have_content(company.offices.count) }
+    end
+
+    describe "employee" do
+      it { should have_content(@e1.email) }
+      it { should have_content(@e2.email) }
+      it { should have_content('2') }
     end
   end
 end

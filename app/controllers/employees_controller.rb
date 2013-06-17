@@ -12,7 +12,8 @@ class EmployeesController < ApplicationController
   end
 
   def index
-    @employee = Employee.all
+    @company = Company.find_by_id(Office.find_by_id(employee_current_user.office_id).company_id)
+    @employees = Employee.where("employees.office_id IN (SELECT offices.id FROM offices WHERE (company_id = ?))", @company.id)
   end
 
   def create

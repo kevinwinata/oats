@@ -18,7 +18,7 @@
       <%= f.text_field :mobile_number %>
 
       <%= f.label :office_id %>
-      <%= f.select(:office_id,options_for_select([1,2,3],1)) %>
+      <%= f.collection_select :office_id, Office.all, :id, :name %>
 
       <%= f.label :password %>
       <%= f.password_field :password %>

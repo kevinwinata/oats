@@ -102,5 +102,18 @@ describe "company pages" do
       it { should have_content(@e2.email) }
       it { should have_content('2') }
     end
+
+    describe "delete offices" do
+      it "should delete an office" do
+        expect { click_link('delete') }.to change(Office, :count).by(-1)
+      end
+    end
+
+    describe "delete employees" do
+      it "should delete an employee" do
+        expect { click_link('fire') }.to change(Employee, :count).by(-1)
+      end
+    end
+
   end
 end

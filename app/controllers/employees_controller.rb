@@ -5,6 +5,7 @@ class EmployeesController < ApplicationController
 
   def new
     @employee = Employee.new
+    cookies[:url] = request.fullpath
   end
 
   def show
@@ -19,11 +20,20 @@ class EmployeesController < ApplicationController
   def create
     @employee = Employee.new(params[:employee])
     if @employee.save
-      employee_sign_in @employee
-      redirect_to @employee
+      if cookies[:url] == '/company/new_employee'
+        redirect_to company_current_user
+      else
+        employee_sign_in @employee
+        redirect_to @employee
+      end
     else
-      render 'new'
+      if cookies[:url] == '/company/new_employee'
+        redirect_to '/company/new_employee'
+      else
+        render 'new'
+      end
     end
+    cookies.delete :url
   end
 
   def edit
@@ -48,6 +58,11 @@ class EmployeesController < ApplicationController
     else
       render 'edit'
     end
+  end
+
+  def destroy
+    Employee.find(params[:id]).destroy
+    redirect_to company_current_user
   end
 
   private

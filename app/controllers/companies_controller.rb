@@ -39,6 +39,11 @@ class CompaniesController < ApplicationController
     end
   end
 
+  def new_employee
+    @employee = Employee.new
+    cookies[:url] = request.fullpath
+  end
+
   private
 
     def correct_company

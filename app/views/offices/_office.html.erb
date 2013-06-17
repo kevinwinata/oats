@@ -2,6 +2,4 @@
 <%= office.name %>
 <%= office.latitude %>
 <%= office.longitude %>
-<% if company_current_user?(office.company) %>
 <%= link_to "delete", office, method: :delete, data: { confirm: "You sure?" }, title: office.name %>
-<% end %>

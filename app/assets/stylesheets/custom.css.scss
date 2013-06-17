@@ -253,8 +253,6 @@ p {
 }
 
 #register_button{
-	border-left: solid 2px black;
-	border-bottom: solid 2px black;
 	background: #435FFF;
 	float: right;
 	margin-right: 100px;
@@ -262,7 +260,8 @@ p {
 	height: 30px;
 	width: 100px;
 	padding-top: 8px;
-	border-radius: 3px;
+	border-bottom-right-radius: 5px;
+	border-bottom-left-radius: 5px;
 	font-weight:bold;
 	a{
 		color: white;

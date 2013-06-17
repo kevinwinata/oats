@@ -23,8 +23,7 @@ class EmployeesController < ApplicationController
       if cookies[:url] == '/company/new_employee'
         redirect_to company_current_user
       else
-        employee_sign_in @employee
-        redirect_to @employee
+        redirect_to '/employees'
       end
     else
       if cookies[:url] == '/company/new_employee'

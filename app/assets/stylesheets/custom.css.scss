@@ -619,3 +619,28 @@ p {
 	margin-top: -50px;
 	visibility: hidden;
 }
+
+.sub-title
+{
+	margin-top: 20px;
+	margin-bottom: 40px;
+	height: 30px;
+	border-top: 0;
+	border-bottom: 2px;
+	border-left: 0;
+	border-right: 0;
+	border-style: solid;
+	font-size: 25px;
+	font-weight: bold;
+	font-family: Georgia, serif;
+}
+
+.center-text
+{
+    text-align: center;
+    height: 40px;
+	font-size: 36px;
+	color: red;
+	margin-left: auto;
+	margin-right: auto;
+}

@@ -555,3 +555,67 @@ p {
 		color: black;
     }
 }
+
+#timer{
+	height: 120px;
+	width: 370px;
+	margin-right: auto;
+	margin-left: auto;
+	margin-bottom: 40px;
+	vertical-align: middle;
+}
+
+#timer-hour{
+	background-color: black;
+	color: red;
+	font-weight:bold;
+	font-size: 500%;
+	width: 100px;
+	text-align: center;
+	float: left;
+	height: 70px;
+	padding-top: 50px;
+}
+
+#timer-symbol{
+	color: red;
+	background-color: black;
+	font-weight:bold;
+	font-size: 500%;
+	width: 30px;
+	text-align: center;
+	float: left;
+	height: 70px;
+	padding-top: 50px;	
+}
+
+#timer-minute{
+	background-color: black;
+	color: red;
+	font-weight:bold;
+	font-size: 500%;
+	width: 100px;
+	text-align: center;
+	float: left;
+	height: 70px;
+	padding-top: 50px;
+}
+
+#timer-second{
+	background-color: black;
+	color: red;
+	font-weight:bold;
+	font-size: 500%;
+	width: 100px;
+	text-align: center;
+	float: left;
+	height: 70px;
+	padding-top: 50px;
+}
+
+#checkout{
+	position: absolute;
+	z-index:5;
+	margin-top: -50px;
+	visibility: hidden;
+}

@@ -633,6 +633,11 @@ p {
 	font-size: 25px;
 	font-weight: bold;
 	font-family: Georgia, serif;
+	a{
+		font-size: 12px;
+		float: right;
+		margin-top: 10px;
+	}
 }
 
 .center-text
@@ -643,6 +648,160 @@ p {
 	color: red;
 	margin-left: auto;
 	margin-right: auto;
+}
+
+/* company profile */
+
+#sub-title-bigtext{
+	width: 300px;
+	float: left;
+}
+
+.company_profile_content{
+	border: 1px solid black;
+	background-color: white;
+	width: 900px;
+	height: 300px;
+	margin-left: auto;
+	margin-right: auto;
+	padding: 20px;
+	border-radius: 5px;
+	margin-top: -20px;
+}
+
+.company_profile_component{
+	height: 50px;
+}
+
+.label_company_profile{
+	margin-top: 15px;
+	margin-bottom: 10px;
+	font-weight: bold;
+	width: 100px;
+	float:left;
+}
+
+.symbol_company_profile{
+	margin-top: 15px;
+	margin-bottom: 10px;
+	font-weight: bold;
+	width: 5px;
+	float:left;
+}
+
+#company_profile_name{
+	margin-top: 15px;
+	margin-bottom: 10px;
+	float:right;
+	padding-left: 3px;
+	width: 780px;
+}
+
+#company_profile_address{
+	margin-top: 15px;
+	margin-bottom: 10px;
+	float:right;
+	padding-left: 3px;
+	width: 780px;
+}
+
+#company_profile_contact{
+	margin-top: 15px;
+	margin-bottom: 10px;
+	float:right;
+	padding-left: 3px;
+	width: 780px;
+}
+
+#company_profile_bill{
+	margin-top: 15px;
+	margin-bottom: 10px;
+	float:right;
+	padding-left: 3px;
+	width: 780px;
+}
+
+#company_profile_backup{
+	width: 100px;
+	color: black;
+	font-size: 100%;
+	height: 20px;
+	padding-top: 3px;
+	padding-bottom: 3px;
+	padding-left: 50px;
+	float:left;
+	border-radius: 2px;
+	margin-top:80px;
+}
+
+/* edit company profile */
+.edit_company_profile_component{
+	height: 50px;
+}
+
+.edit_label_company_profile{
+	margin-top: 15px;
+	margin-bottom: 10px;
+	font-weight: bold;
+	width: 100px;
+	float:left;
+}
+
+.edit_symbol_company_profile{
+	margin-top: 15px;
+	margin-bottom: 10px;
+	font-weight: bold;
+	width: 5px;
+	float:left;
+}
+
+#edit_company_profile_textfield{
+	margin-top: 15px;
+	padding-left: 3px;
+	width: 250px;
+	margin-top: auto;
+	margin-bottom: auto;
+}
+
+#edit_company_profile_name{
+	margin-top: 8px;
+	float:right;
+	padding-left: 3px;
+	width: 780px;
+}
+
+#edit_company_profile_address{
+	margin-top: 8px;
+	float:right;
+	padding-left: 3px;
+	width: 780px;
+}
+
+#edit_company_profile_contact{
+	margin-top: 8px;
+	float:right;
+	padding-left: 3px;
+	width: 780px;
+}
+
+#edit_company_profile_bill{
+	margin-top: 15px;
+	float:right;
+	padding-left: 3px;
+	width: 780px;
+}
+
+#edit_company_profile_save{
+	width: 100px;
+	color: black;
+	font-size: 100%;
+	height: 30px;
+	padding-top: 3px;
+	padding-bottom: 3px;
+	padding-left: 8px;
+	float:left;
+	border-radius: 2px;
+	margin-top: 80px;
 }
 
 /* employee list */

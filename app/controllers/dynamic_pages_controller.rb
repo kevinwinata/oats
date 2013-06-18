@@ -19,4 +19,7 @@ class DynamicPagesController < ApplicationController
   
   def employee_list
   end
+
+  def employee_performance
+  end
 end

@@ -61,3 +61,13 @@ function padding(number){
 
 	return number;
 }
+
+function popUp(){
+	document.getElementById("popup_window").style.opacity = "1";
+	document.getElementById("popup_window").style.zIndex = 5;
+}
+
+function close_popup(){
+	document.getElementById("popup_window").style.opacity = "0";
+	document.getElementById("popup_window").style.zIndex = -5;
+}

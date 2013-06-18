@@ -7,6 +7,36 @@
 		<%= yield(:title) %>
 	</div>
 </div>
+<div id="popup_window">
+	<div id="form_add_employee">
+		<%= form_for(:@employee) do |f| %>
+		<div class="add_employee_component">
+			<%= f.label :name, id: "add_employee_label" %>
+		    <%= f.text_field :name, id: "add_employee_textfield" %>
+		</div>
+
+		<div class="add_employee_component">
+		    <%= f.label :email, id: "add_employee_label" %>
+		    <%= f.text_field :email, id: "add_employee_textfield" %>
+		</div>
+
+		<div class="add_employee_component">
+		    <%= f.label :password, id: "add_employee_label" %>
+		    <%= f.password_field :password, id: "add_employee_textfield" %>
+	    </div>
+
+	    <div class="add_employee_component">
+		    <%= f.label :division, id: "add_employee_label" %>
+		    <%= f.text_field :division, id: "add_employee_textfield" %>
+	    </div>
+
+		    <%= f.submit "Add", class: "orange_button add_employee_button", id: "add_employee" %>
+		   	   <div class="orange_button add_employee_button" id="exit_add_employee" onClick="close_popup()">
+		   	   		<a href="#">Exit</a>
+		   	   </div>
+	    <% end %>
+	</div>
+</div>
 <div>
 	<div class="left-big-div">
 		<table id="employee-table" border="1" class="list-table">
@@ -46,7 +76,7 @@
 		</table>
 	</div>
 	<div class="right-small-div">
-		<input type="button" value="Add" class="normal-button" onClick=""/>
+		<input type="button" value="Add" class="normal-button" onClick="popUp()"/>
 		<input type="button" value="Delete" class="normal-button" onClick=""/>
 		<input type="button" value="Change Role" class="normal-button" onClick=""/>
 	</div>

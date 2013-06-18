@@ -10,4 +10,7 @@ class DynamicPagesController < ApplicationController
 
   def employee_home
   end
+
+  def employee_list
+  end
 end

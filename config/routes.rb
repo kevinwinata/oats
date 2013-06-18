@@ -1,6 +1,7 @@
 Oats::Application.routes.draw do
   resources :employees
   resources :companies
+  resources :worktimes
   resources :session_employees, only: [:new, :create, :destroy]
   resources :session_companies, only: [:new, :create, :destroy]
   resources :offices, only: [:create, :destroy]

@@ -18,8 +18,7 @@ class Worktime < ActiveRecord::Base
   belongs_to :employee
 
   validates :employee_id, presence: true
-  
   validates :place_checkin, presence: true, length: { maximum: 50 }
-  validates :place_checkout, presence: true, length: { maximum: 50 }
+  validates :place_checkout, length: { maximum: 50 }
 
 end

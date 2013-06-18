@@ -10,6 +10,8 @@ class EmployeesController < ApplicationController
 
   def show
   	@employee = Employee.find(params[:id])
+    @worktimes = @employee.worktimes
+    @worktime = Worktime.find_by_employee_id(@employee, :limit => 1, :order => 'created_at desc')
   end
 
   def index

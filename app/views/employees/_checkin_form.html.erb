@@ -1,0 +1,6 @@
+<% if @employee.checkin?(@employee) %>
+    <%= render 'checkout' %>
+  <% else %>
+    <%= render 'checkin' %>
+ <% end %>
+

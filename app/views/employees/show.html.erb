@@ -1,2 +1,5 @@
 <%= @employee.name %>, <%= @employee.email %>
 <%= link_to "Sign out", '/employee/signout', method: "delete" %>
+<%= render @worktimes %>
+</br>
+<%= render 'checkin_form' %>

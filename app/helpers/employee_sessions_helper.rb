@@ -25,4 +25,10 @@ module EmployeeSessionsHelper
     self.employee_current_user = nil
     cookies.delete(:remember_token)
   end
+
+  def signed_in_employee
+    unless employee_signed_in?
+      redirect_to '/employee/signin'
+    end
+  end
 end

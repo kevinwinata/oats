@@ -37,6 +37,11 @@ class EmployeesController < ApplicationController
     cookies.delete :url
   end
 
+  def edit_employee
+    @employee = Employee.find(params[:id])
+    cookies[:url] = request.fullpath
+  end
+
   def edit
     @employee = Employee.find(params[:id])
     cookies[:url] = request.fullpath
@@ -48,6 +53,20 @@ class EmployeesController < ApplicationController
       @employee.update_attribute('role',params[:employee][:role])
       @employee.update_attribute('office_id',params[:employee][:office_id])
       redirect_to company_current_user
+    elsif employee_current_user.role? && (cookies[:url].include?'/employee/edit_employee') 
+      if (Employee.valid_name?(params[:employee][:name]) && 
+        Employee.valid_mobile_number?(@employee,params[:employee][:mobile_number]) && 
+        Employee.valid_office_id?(@employee,params[:employee][:office_id]))
+        @employee.update_attribute('name',params[:employee][:name])
+        @employee.update_attribute('division',params[:employee][:division])
+        @employee.update_attribute('mobile_number',params[:employee][:mobile_number])
+        @employee.update_attribute('office_id',params[:employee][:office_id])
+        redirect_to '/employees'
+      else
+        redirect_to :back
+      end
+    elsif employee_current_user.role? && (cookies[:url].include?'/employee/reset_pass') 
+        
     else
       if @employee.authenticate(params[:employee][:old_password]) && Employee.valid_password?(params[:employee][:password], params[:employee][:password_confirmation])
         if @employee.update_attribute('password', params[:employee][:password]) && @employee.update_attribute('password_confirmation', params[:employee][:password_confirmation])
@@ -84,6 +103,10 @@ class EmployeesController < ApplicationController
     end
 
     def hr_employee
-      redirect_to(@employee_current_user) unless employee_current_user.role?
+      if employee_signed_in?
+        redirect_to(@employee_current_user) unless employee_current_user.role?
+      else
+        redirect_to '/employee/signin'
+      end
     end
 end

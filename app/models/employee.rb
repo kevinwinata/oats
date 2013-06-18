@@ -46,6 +46,18 @@ class Employee < ActiveRecord::Base
     return (pass.to_s.length > 5 && pass.to_s == conf.to_s)
   end
 
+  def self.valid_name?(name)
+    return (name.to_s.length < 51 && name.to_s.length > 0)
+  end
+
+  def self.valid_mobile_number?(employee,number)
+    return (!Employee.exists?(:mobile_number => number.to_s) || number.to_s == employee.mobile_number.to_s) && (number.to_s.length > 0)
+  end
+
+  def self.valid_office_id?(employee,office_id)
+    return Company.find(Office.find(office_id).company_id) == Company.find(Office.find(employee.office_id).company_id)
+  end
+
   private
 
     def create_remember_token

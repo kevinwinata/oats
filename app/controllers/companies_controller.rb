@@ -1,6 +1,6 @@
 class CompaniesController < ApplicationController
-  before_filter :signed_in_company, only: [:edit, :update, :show]
-  before_filter :correct_company,   only: [:edit, :update]
+  before_filter :signed_in_company, only: [:edit, :update, :edit_employee, :show]
+  before_filter :correct_company,   only: [:edit, :update, :edit_employee]
 
   def new
     @company = Company.new

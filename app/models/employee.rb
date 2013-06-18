@@ -42,6 +42,10 @@ class Employee < ActiveRecord::Base
     end
   end
 
+  def self.valid_password?(pass, conf)
+    return (pass.to_s.length > 5 && pass.to_s == conf.to_s)
+  end
+
   private
 
     def create_remember_token

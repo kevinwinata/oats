@@ -44,16 +44,20 @@ class EmployeesController < ApplicationController
 
   def update
     @employee = Employee.find(params[:id])
-    if cookies[:url].include?'/company/edit_employee'
+    if (cookies[:url].include?'/company/edit_employee') && company_signed_in?
       @employee.update_attribute('role',params[:employee][:role])
       @employee.update_attribute('office_id',params[:employee][:office_id])
       redirect_to company_current_user
     else
-      if @employee.update_attributes(params[:employee].except(:role))
-        employee_sign_in @employee
-        redirect_to @employee
+      if @employee.authenticate(params[:employee][:old_password]) && Employee.valid_password?(params[:employee][:password], params[:employee][:password_confirmation])
+        if @employee.update_attribute('password', params[:employee][:password]) && @employee.update_attribute('password_confirmation', params[:employee][:password_confirmation])
+          employee_sign_in @employee
+          redirect_to @employee
+        else
+          redirect_to '/employee/signin'
+        end
       else
-        render 'edit'
+        redirect_to edit_employee_path(@employee)
       end
     end
     cookies.delete :url

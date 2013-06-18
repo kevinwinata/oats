@@ -30,6 +30,10 @@
 	</div>
 </div>
 
+<div id="perf_chart">
+
+</div>
+
 <script type="text/javascript">
   $(function() {
     $('#datetimepicker_from').datetimepicker({
@@ -61,4 +65,25 @@
         format: 'dd/MM/yyyy hh:mm:ss',
         language: 'pt-BR'
       });
+    </script>
+
+    <script type="text/javascript">
+      window.onload = function(){
+          zingchart.render(
+            {
+              id : "perf_chart",
+              height : 450,
+              width : 600,
+              data : myChart
+            }
+          );
+        }
+
+        var myChart = {
+          type : "bar",
+          title : {text : "Performance Graph"},
+          series :[
+                {values : [8, 6, 4, 8, 7, 10, 8, 9, 7]}
+              ]
+        };
     </script>

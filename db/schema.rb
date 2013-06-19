@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130614062342) do
+ActiveRecord::Schema.define(:version => 20130619025716) do
 
   create_table "companies", :force => true do |t|
     t.string   "username"
@@ -50,9 +50,14 @@ ActiveRecord::Schema.define(:version => 20130614062342) do
     t.string   "name"
     t.float    "longitude"
     t.float    "latitude"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
     t.integer  "company_id"
+    t.float    "latitude_min"
+    t.float    "longitude_min"
+    t.float    "latitude_max"
+    t.float    "longitude_max"
+    t.float    "range"
   end
 
   create_table "worktimes", :force => true do |t|

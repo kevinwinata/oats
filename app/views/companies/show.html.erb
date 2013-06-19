@@ -6,6 +6,25 @@
 <% end %>
 <br/>
 
+<%= form_for Office.new do |f| %>
+  <div class="field">
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+
+    <%= f.label :latitude %>
+    <%= f.text_field :latitude %>
+
+    <%= f.label :longitude %>
+    <%= f.text_field :longitude %>
+
+    <%= f.label :range %>
+    <%= f.text_field :range %>
+  </div>
+  <%= f.submit "Add", class: "btn btn-large btn-primary" %>
+<% end %>
+
+<br/>
+
 <% if @employees.any? %>
 <%= @employees.count %>
 <%= render @employees %>

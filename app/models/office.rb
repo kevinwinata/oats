@@ -12,7 +12,7 @@
 #
 
 class Office < ActiveRecord::Base
-  attr_accessible :latitude, :longitude, :name
+  attr_accessible :latitude, :latitude_min, :latitude_max, :longitude, :longitude_min, :longitude_max, :name, :range
   has_many :employees
   belongs_to :company
 
@@ -22,4 +22,13 @@ class Office < ActiveRecord::Base
   														 :less_than_or_equal_to => 90}
   validates :longitude, presence: true, :numericality => {:greater_than_or_equal_to => -180, 
   														 :less_than_or_equal_to => 180}
+  validates :latitude_min, :numericality => {:greater_than_or_equal_to => -90, 
+  														 :less_than_or_equal_to => 90}
+  validates :longitude_min, :numericality => {:greater_than_or_equal_to => -180, 
+  														 :less_than_or_equal_to => 180}
+  validates :latitude_max, :numericality => {:greater_than_or_equal_to => -90, 
+  														 :less_than_or_equal_to => 90}
+  validates :longitude_max, :numericality => {:greater_than_or_equal_to => -180, 
+  														 :less_than_or_equal_to => 180}	
+  validates :range, presence: true													 																											 
 end

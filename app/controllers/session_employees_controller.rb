@@ -14,6 +14,6 @@ class SessionEmployeesController < ApplicationController
 
   def destroy
     employee_sign_out
-    redirect_to '/employee/signup'
+    redirect_to '/employee/signin'
   end
 end

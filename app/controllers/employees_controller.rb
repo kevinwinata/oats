@@ -37,6 +37,11 @@ class EmployeesController < ApplicationController
     cookies.delete :url
   end
 
+  def reset_pass
+    @employee = Employee.find(params[:id])
+    cookies[:url] = request.fullpath
+  end
+
   def edit_employee
     @employee = Employee.find(params[:id])
     cookies[:url] = request.fullpath
@@ -66,17 +71,21 @@ class EmployeesController < ApplicationController
         redirect_to :back
       end
     elsif employee_current_user.role? && (cookies[:url].include?'/employee/reset_pass') 
-        
+        if @employee.update_attributes(params[:employee])
+          redirect_to '/employees'
+        else
+          redirect_to :back
+        end
     else
       if @employee.authenticate(params[:employee][:old_password]) && Employee.valid_password?(params[:employee][:password], params[:employee][:password_confirmation])
         if @employee.update_attribute('password', params[:employee][:password]) && @employee.update_attribute('password_confirmation', params[:employee][:password_confirmation])
           employee_sign_in @employee
           redirect_to @employee
         else
-          redirect_to '/employee/signin'
+          redirect_to :back
         end
       else
-        redirect_to edit_employee_path(@employee)
+        redirect_to :back
       end
     end
     cookies.delete :url

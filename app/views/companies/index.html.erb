@@ -1,3 +1,4 @@
 <% @companies.each do |company| %>
 <%= company.username %>, <%= company.name %>, <%= company.email %>
+<%= link_to "delete", company, method: :delete, data: { confirm: "You sure?" }, title: company.name %>
 <% end %>

@@ -1,0 +1,25 @@
+class DynamicPagesController < ApplicationController
+  def login
+  end
+
+  def register
+  end
+
+  def company_login
+  end
+
+  def employee_home
+  end
+
+<<<<<<< HEAD
+  def employee_list
+  end
+=======
+  def company_profile
+  end
+
+  def edit_company_profile
+  end
+  
+>>>>>>> 7a783ceedf7c0c118eb0351d84278803ff88ea11
+end

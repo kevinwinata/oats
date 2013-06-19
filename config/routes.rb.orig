@@ -1,15 +1,28 @@
 Oats::Application.routes.draw do
-<<<<<<< HEAD
-  get "dummy_pages/dummy"
+  get "dynamic_pages/login"
 
+  get "dynamic_pages/register"
+
+  get "dynamic_pages/company_login"
+
+  get "dynamic_pages/employee_home"
+
+<<<<<<< HEAD
+  get "dynamic_pages/employee_list"
 =======
+  get "dynamic_pages/company_profile"
+  
+  get "dynamic_pages/edit_company_profile"
+>>>>>>> 7a783ceedf7c0c118eb0351d84278803ff88ea11
+
+  get "static_pages/home"
   get "static_pages/about"
   get "static_pages/contact"
   get "static_pages/terms"
   get "static_pages/privacy"
   get "static_pages/clientsandtestimony"
   get "static_pages/help"
->>>>>>> fe4c9c81eb355484ecc4eb5cdb096919fdee4f41
+  get "dummy_pages/dummy"
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

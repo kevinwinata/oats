@@ -120,7 +120,7 @@ textarea {
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d8e0de', endColorstr='#0e0e0e',GradientType=0 ); /* IE6-9 */
 }
 
-.menu-list a {
+.menu-list li a {
    display: block;
    font-size: 20pt;
    margin-top: 30px;
@@ -966,4 +966,11 @@ p {
 		width: 80px;
 		height: 25px;		
 	}
+}
+
+#perf_chart
+{
+	margin-left: auto;
+	margin-right: auto;
+	width: 600px;
 }

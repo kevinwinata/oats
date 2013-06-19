@@ -1,4 +1,8 @@
-<%= form_for(@worktime, :url => {:controller => 'worktimes', :action => "update"}, :html => { :method => :put}) do |f| %>
-  <div><%= f.text_field :place_checkout %></div>
-  <%= f.submit "Checkout", class: "btn btn-large btn-primary" %>
+<%= form_tag('/employee/checkout', :method => 'put') do %>
+  <%= label_tag(:latitude) %>
+  <%= text_field_tag(:latitude) %>
+
+  <%= label_tag(:longitude) %>
+  <%= text_field_tag(:longitude) %>
+  <%= submit_tag("Checkout") %>
 <% end %>

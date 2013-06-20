@@ -20,6 +20,13 @@ Oats::Application.routes.draw do
   match '/employee/checkin', to: 'worktimes#create', via: :post
   match '/employee/checkout', to: 'worktimes#update', via: :put
 
+  get "static_pages/home"
+  get "static_pages/about"
+  get "static_pages/contact"
+  get "static_pages/terms"
+  get "static_pages/privacy"
+  get "static_pages/clientsandtestimony"
+  get "static_pages/help"
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

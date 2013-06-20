@@ -1,3 +1,13 @@
+<% provide(:title, 'Employee List') %>
+<% provide(:description, 'dynamic') %>
+<% provide(:role, 'company') %>
+
+<div class="sub-title">
+  <div>
+    <%= yield(:title) %>
+  </div>
+</div>
+
 <%= @company.username %>, <%= @company.name %>, <%= @company.email %>
 
 <% if @company.offices.any? %>
@@ -26,8 +36,35 @@
 <br/>
 
 <% if @employees.any? %>
-<%= @employees.count %>
-<%= render @employees %>
+<div class="left-big-div">
+    <table id="employee-table" border="1" class="list-table">
+      <tr>
+        <th>
+        </th>
+        <th>
+          Name
+        </th>
+        <th>
+          Email
+        </th>
+        <th>
+          Division
+        </th>
+        <th>
+          Office
+        </th>
+        <th>
+          Role
+        </th>
+        
+      </tr>
+      <%= render @employees %>
+    </table>
+  </div>
 <% end %>
 <br/>
-<%= link_to "Sign out", '/company/signout', method: "delete" %>
+<div class="right-small-div">
+  <input type="button" value="Add" class="normal-button" onClick="popUp()"/>
+  <input type="button" value="Delete" class="normal-button" onClick=""/>
+  <input type="button" value="Change Role" class="normal-button" onClick=""/>
+</div>

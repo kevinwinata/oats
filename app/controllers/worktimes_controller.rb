@@ -1,10 +1,9 @@
 class WorktimesController < ApplicationController
-	before_filter :signed_in_employee
-
 	def create
 		@worktime = employee_current_user.worktimes.build()
 	    @worktime.checkin = Time.now
 	    @office = Office.find(employee_current_user.office_id)
+	    
 	    if (params[:latitude].to_f > @office.latitude_min) && (params[:latitude].to_f < @office.latitude_max &&
 	    	params[:longitude].to_f > @office.longitude_min) && (params[:longitude].to_f < @office.longitude_max)
 	    	@worktime.place_checkin = @office.name

@@ -1,3 +1,28 @@
-</br>
-<%= employee.name %>, <%= employee.email %> <%= employee.office_id %>
-<%= link_to "fire", employee, method: :delete, data: { confirm: "You sure?" }, title: employee.email %>
+<tr>
+	<td>
+		<input type="checkbox" name="cb1" value="cb1">
+	</td>
+	<td>
+		<%= employee.name %> 
+	</td>
+	<td>
+		<%= employee.email %>
+	</td>
+	<td>
+		<%= employee.division %> 
+	</td>
+	<%= form_for(employee) do |f| %>
+	<td>
+		<%= f.collection_select :office_id, company_current_user.offices, :id, :name %>
+	</td>
+	<td>
+		<%= f.select :role, {"Human Resource"=>true, "Employee"=>false}%>
+		
+	</td>
+	<td>
+		<%= f.submit "Save", class: "btn btn-primary" %>
+	<% end %>
+	<br>
+		<%= button_to "Fire", employee, :method => "delete" , :confirm => "You sure?" ,:class => "btn btn-primary" %>
+	</td>
+</tr>

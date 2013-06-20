@@ -1,29 +1,62 @@
-<title>Edit company</title> 
-<h1>Update company profile</h1>
+<% provide(:title, 'Edit Company Profile') %>
+<% provide(:description, 'dynamic') %>
+<% provide(:role, 'company') %>
 
-<div class="row">
-  <div class="span6 offset3">
-    <%= form_for(@company) do |f| %>
-
-      <%= f.label :address %>
-      <%= f.text_field :address %>
-
-      <%= f.label :contact %>
-      <%= f.text_field :contact %>
-
-      <%= f.label :email %>
-      <%= f.text_field :email %>
-
-      <%= f.label :name %>
-      <%= f.text_field :name %>
-
-      <%= f.label :password %>
-      <%= f.password_field :password %>
-
-      <%= f.label :password_confirmation, "Confirm Password" %>
-      <%= f.password_field :password_confirmation %>
-
-      <%= f.submit "Save changes", class: "btn btn-large btn-primary" %>
-    <% end %>
+<div class="sub-title">
+  <div id="sub-title-bigtext">
+    Edit Company Profile
   </div>
+  <div>
+    <a href="edit_company_profile">edit</a>
+  </div>
+</div>
+<div class="edit_company_profile_content">
+  <%= form_for(:session, url: "#") do |f| %>
+  <div class="edit_company_profile_component">  
+    <%= f.label :Name, :class=>"edit_label_company_profile" %>
+    <div class="edit_symbol_company_profile">:</div>
+    <div id= "edit_company_profile_name">
+        <%= f.text_field :name, :id=>"edit_company_profile_textfield" %>  
+      </div>
+  </div>
+  <div class="edit_company_profile_component">
+    <%= f.label :Address, :class=>"edit_label_company_profile" %>
+    <div class="edit_symbol_company_profile">:</div>
+    <div id= "edit_company_profile_address">
+      <%= f.text_field :address, :id=>"edit_company_profile_textfield" %> 
+    </div>
+  </div>
+
+  <div class="edit_company_profile_component">
+    <%= f.label :Contact, :class=>"edit_label_company_profile" %>
+    <div class="edit_symbol_company_profile">:</div>
+    <div id= "edit_company_profile_contact">
+      <%= f.text_field :contact, :id=>"edit_company_profile_textfield" %> 
+    </div>
+  </div>
+
+  <div class="edit_company_profile_component">
+    <%= f.label :Password, :class=>"edit_label_company_profile" %>
+    <div class="edit_symbol_company_profile">:</div>
+    <div id= "edit_company_profile_password">
+      <%= f.text_field :contact, :id=>"edit_company_profile_textfield" %> 
+    </div>
+  </div>
+
+  <div class="edit_company_profile_component">
+    <%= f.label :Password_Confirmation, :class=>"edit_label_company_profile" %>
+    <div class="edit_symbol_company_profile">:</div>
+    <div id= "edit_company_profile_password_confirmation">
+      <%= f.text_field :passwordconfirmation, :id=>"edit_company_profile_textfield" %>  
+    </div>
+  </div>
+
+  <div class="edit_company_profile_component">
+    <div class="edit_label_company_profile">Bill</div>
+    <div class="edit_symbol_company_profile">:</div>
+    <div id= "edit_company_profile_bill">Rp xxxx</div>
+  </div>
+
+   <%= f.submit "Save", class: "orange_button", id: "edit_company_profile_save" %>
+  <% end %>
 </div>

@@ -9,7 +9,8 @@ class EmployeesController < ApplicationController
   end
 
   def show
-  	@employee = Employee.find(params[:id])
+    @timer = (Time.now - Worktime.find_by_employee_id(employee_current_user, :limit => 1, :order => 'created_at desc').checkin).to_i
+    @employee = Employee.find(params[:id])
     @worktimes = @employee.worktimes
     @worktime = Worktime.find_by_employee_id(@employee, :limit => 1, :order => 'created_at desc')
   end
@@ -54,7 +55,7 @@ class EmployeesController < ApplicationController
 
   def update
     @employee = Employee.find(params[:id])
-    if (cookies[:url].include?'/company/edit_employee') && company_signed_in?
+    if (cookies[:url].include?'/companies') && company_signed_in?
       @employee.update_attribute('role',params[:employee][:role])
       @employee.update_attribute('office_id',params[:employee][:office_id])
       redirect_to company_current_user

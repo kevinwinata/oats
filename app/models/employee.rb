@@ -20,7 +20,7 @@ class Employee < ActiveRecord::Base
 
   has_secure_password
 
-  has_many :worktimes
+  has_many :worktimes, dependent: :destroy
   belongs_to :office
 
   before_save { |employee| employee.email = email.downcase }

@@ -1,16 +1,17 @@
-<h1>Reset Password</h1>
+<% provide(:title, 'Reset Password') %>
+<% provide(:description, 'none') %>
+<div>
+	<h1>Reset Password</h1>
+</div>
+<div class="login_form">
+<%= form_for(@employee) do |f| %>
 
-<div class="row">
-  <div class="span6 offset3">
-    <%= form_for(@employee) do |f| %>
+  <%= f.label :password %>
+  <%= f.password_field :password %>
 
-      <%= f.label :password %>
-      <%= f.password_field :password %>
+  <%= f.label :password_confirmation, "Confirmation" %>
+  <%= f.password_field :password_confirmation %>
 
-      <%= f.label :password_confirmation, "Confirmation" %>
-      <%= f.password_field :password_confirmation %>
-
-      <%= f.submit "Save changes", class: "btn btn-large btn-primary" %>
-    <% end %>
-  </div>
+  <%= f.submit "Save changes", class: "orange_button login_button" %>
+<% end %>
 </div>

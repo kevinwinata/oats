@@ -1,4 +1,15 @@
-<%= @employee.name %>, <%= @employee.email %>
+<% provide(:title, 'Home') %>
+<% provide(:description, 'dynamic') %>
+<% provide(:role, 'employee') %>
+
+<div class="sub-title">
+	<div>
+		<%= yield(:title) %>
+	</div>
+</div>
+<div>
+	<div class="center-text">Work Duration</div>
+</div>
 <%= link_to "Sign out", '/employee/signout', method: "delete" %>
 <%= render @worktimes %>
 </br>

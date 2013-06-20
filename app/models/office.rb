@@ -13,7 +13,7 @@
 
 class Office < ActiveRecord::Base
   attr_accessible :latitude, :latitude_min, :latitude_max, :longitude, :longitude_min, :longitude_max, :name, :range
-  has_many :employees
+  has_many :employees, dependent: :destroy
   belongs_to :company
 
   validates :company_id, presence: true

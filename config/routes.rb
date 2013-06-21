@@ -18,7 +18,7 @@ Oats::Application.routes.draw do
   match '/employee/edit_employee/:id', to: 'employees#edit_employee'
   match '/employee/reset_pass/:id', to: 'employees#reset_pass'
   match '/employee/checkin', to: 'worktimes#create', via: :post
-  match '/employee/checkout', to: 'worktimes#update', via: :put
+  match '/employee/checkout', to: 'worktimes#update', via: :post
 
   get "static_pages/home"
   get "static_pages/about"

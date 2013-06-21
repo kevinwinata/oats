@@ -155,7 +155,7 @@ textarea {
 /* footer */
 
 footer {
-  margin-top: 45px;
+  margin-top: 46px;
   border-top: 1px solid black;
   background-color: black;
   position: relative;
@@ -229,7 +229,7 @@ p {
 #logo_home{ 
 	width: 400px;
 	margin-top: 40px;
-	margin-bottom: 80px;
+	margin-bottom: 40px;
 }
 
 #home_content{
@@ -237,27 +237,26 @@ p {
 }
 
 #home_content_left{
-	width: 510px;
+	width: 400px;
 	float: left;
 	height: auto;
-	margin-left: -200px;
 	a {
 		text-decoration: none;
 	}
 }
 
 #home_content_right{
-	width: 900px;
+	width: 750px;
 	float: right;
-	margin-right: -280px;
-	margin-top: -10px;
+	margin-right: -90px;
+	margin-bottom: -60px;
 }
 
 #register_button{
 	background: #435FFF;
 	float: right;
 	margin-right: 100px;
-	margin-top: 0px;
+	margin-top: -10px;
 	height: 30px;
 	width: 100px;
 	padding-top: 8px;
@@ -328,14 +327,12 @@ p {
 }
 
 /* Terms of Service page */
-#terms_content {
+.static_content {
 	border: 1px solid black;
 	text-align: justify;
 	padding: 30px;
 	background-color: #FFF8AF;
 	border-radius: 10px;
-	width: 120%;
-	margin-left:-10%;
 	font-size: 150%;
 }
 
@@ -454,6 +451,7 @@ p {
 #help_category{
 	margin: 30px;
 	text-align: left;
+	float: left;
 	ul {
 
 		li{

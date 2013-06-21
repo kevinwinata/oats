@@ -1,6 +1,10 @@
 <% provide(:title, 'Home') %>
 <% provide(:description, 'dynamic') %>
-<% provide(:role, 'employee') %>
+<% if employee_current_user.role %>
+	<% provide(:role, 'HR') %>
+<% else %>
+	<% provide(:role, 'employee') %>
+<% end %>
 
 <div class="sub-title">
 	<div>

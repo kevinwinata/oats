@@ -4,8 +4,7 @@
   </div>
   <div class="floating-bar">
     <ul class="menu-list">
-      <li class="first-list"><a href="company_profile">Home</a></li>
-      <li><a href="employee_list">Employees</a></li>
+      <li class="first-list"><%= link_to "Home", @company_current_user %></li>
       <li class="last-list"><%= link_to "Sign out", '/company/signout', method: "delete" %></li>
     </ul>
   </div>

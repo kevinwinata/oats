@@ -4,10 +4,10 @@
   </div>
   <div class="floating-bar">
     <ul class="menu-list">
-      <li class="first-list"><a href="employee_home">Home</a></li>
+      <li class="first-list"><%= link_to "Home", @employee_current_user %></li>
       <li><a href="employee_performance">Performance</a></li>
-      <li><a href="employee_list">Employees</a></li>
-      <li class="last-list"><a href="/static_pages/home">Logout</a></li>
+      <li><a href="/employees">Employees</a></li>
+      <li class="last-list"><%= link_to "Sign out", '/employee/signout', method: "delete" %></li>
     </ul>
   </div>
 </header>

@@ -39,13 +39,10 @@ function showPosition(position)
   }
 </script>
 
-<%= form_tag('/employee/checkout', :method => 'put', :name => "check_out_form") do %>
+<%= form_tag('/employee/checkout', :method => 'post', :name => "check_out_form") do %>
   <%= hidden_field_tag(:latitude) %>
 
   <%= hidden_field_tag(:longitude) %>
 <% end %>
 
 <button onclick="getLocation()">Checkout</button>
-<div class="opt-button">
-	<input type="button" id="checkout" value="Checkout" onclick="postLocation('PUT', '/employee/checkout')">
-</div>

@@ -1,0 +1,132 @@
+<% provide(:title, 'Performance') %>
+<% provide(:description, 'dynamic') %>
+<% provide(:role, 'employee') %>
+
+<div class="sub-title">
+	<div>
+		<%= yield(:title) %>
+	</div>
+</div>
+<div id="performance_period">
+	<div id="period_label">Period from : </div>
+	<div id="datetimepicker_from" class="input-append">
+	    <input data-format="dd-MM-yyyy" value='<%= Time.parse(params[:from]).strftime("%d-%m-%Y")  unless params[:from].nil? %>' id="datefrom" type="text"></input>
+	    <span class="add-on">
+	    	<i data-time-icon="icon-time" data-date-icon="icon-calendar"></i>
+	    </span>
+	</div>
+	<div id="period_label"> to : </div>
+	<div id="datetimepicker_to" class="input-append">
+	    <input data-format="dd-MM-yyyy" id="dateto" value='<%= Time.parse(params[:to]).strftime("%d-%m-%Y") unless params[:to].nil? %>' type="text"></input>
+	    <span class="add-on">
+	    	<i data-time-icon="icon-time" data-date-icon="icon-calendar"></i>
+	    </span>
+	</div>
+	<div class="orange_button" id="refresh_employee_performance" onClick="refresh_performance()">
+		<a href="javascript:checkDate()">Refresh</a>
+	</div>
+</div>
+
+<div id="perf_chart">
+
+</div>
+
+<script type="text/javascript">
+  $(function() {
+    $('#datetimepicker_from').datetimepicker({
+      pickTime: false
+    });
+  });
+
+   $(function() {
+    $('#datetimepicker_to').datetimepicker({
+      pickTime: false
+    });
+  });
+</script>
+
+ <script type="text/javascript"
+     src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.8.3/jquery.min.js">
+    </script> 
+    <script type="text/javascript"
+     src="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.2.2/js/bootstrap.min.js">
+    </script>
+    <script type="text/javascript"
+     src="http://tarruda.github.com/bootstrap-datetimepicker/assets/js/bootstrap-datetimepicker.min.js">
+    </script>
+    <script type="text/javascript"
+     src="http://tarruda.github.com/bootstrap-datetimepicker/assets/js/bootstrap-datetimepicker.pt-BR.js">
+    </script>
+    <script type="text/javascript">
+      $('#datetimepicker').datetimepicker({
+        format: 'dd/MM/yyyy hh:mm:ss',
+        language: 'pt-BR'
+      });
+    </script>
+
+    <script>
+      window.onload = function(){
+          zingchart.render(
+            {
+              id : "perf_chart",
+              height : 450,
+              width : 600,
+              data : myChart
+            }
+          );
+        }
+
+        var myChart = {
+          type : "bar",
+          title : {text : "Performance Graph"},
+          series :[
+                {values : [
+                <% if !params[:from].nil? && !params[:to].nil? %>
+                  <% worktimes = Worktime.where("employee_id = ? and checkin > ? and checkout < ?",1,Time.parse(params[:from]), Time.parse(params[:to])) %>
+                  <% date = Time.parse(params[:from]) %>
+                  <% x = 0%>
+                  <% while date <= Time.parse(params[:to])%>
+                    <% a=0 %>
+                    <% if !worktimes[x].nil? && date.strftime("%y%m%d") == worktimes[x].checkin.strftime("%y%m%d") %>
+                        <% a=(worktimes[x].checkout - worktimes[x].checkin).to_i %>
+                        <% x+=1 %>
+                        <% while !worktimes[x].nil? && worktimes[x].checkin.strftime("%y%m%d") == worktimes[x-1].checkin.strftime("%y%m%d")  %>
+                          <% a+= (worktimes[x].checkout - worktimes[x].checkin).to_i %>
+                          <% x+=1 %>
+                        <% end %>
+                        <%= a.to_f/3600 %>
+                    <% else %>
+                        <%= 0 %>
+                    <% end %>
+                    <% if !(date == Time.parse(params[:to])) %>
+                          ,
+                    <% end %>
+                    <% date += 1.day %>
+                  <% end %>
+                  /*<% worktimes.each do | worktime | %>
+                    <%= (worktime.checkout - worktime.checkin).to_i %>
+                    <% if !(worktime == worktimes.last) %>
+                      ,
+                    <% end %>
+                  <% end %>*/
+                <% end %>
+                ]}
+              ]
+        };
+    </script>
+    <script>
+      function refresh_performance()
+      {
+          if (checkDate())
+          {
+            var from = document.getElementById("datefrom").value.replace("/", "-").replace("/", "-");
+            var to = document.getElementById("dateto").value.replace("/", "-").replace("/", "-");
+            var url_now = location.protocol + '//' + location.host + location.pathname;
+
+            window.location = url_now + "?from=" + from + "&to=" + to;
+          }
+          else
+          {
+          }          
+      }
+    </script>

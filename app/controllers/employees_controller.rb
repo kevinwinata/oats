@@ -94,6 +94,10 @@ class EmployeesController < ApplicationController
     cookies.delete :url
   end
 
+  def performance
+    @employee = Employee.find(params[:id])
+  end
+  
   def destroy
     Employee.find(params[:id]).destroy
     redirect_to :back

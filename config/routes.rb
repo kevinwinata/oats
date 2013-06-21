@@ -17,6 +17,7 @@ Oats::Application.routes.draw do
   match '/employee/signout', to: 'session_employees#destroy', via: :delete
   match '/employee/edit_employee/:id', to: 'employees#edit_employee'
   match '/employee/reset_pass/:id', to: 'employees#reset_pass'
+  match '/employee/performance/:id', to: 'employees#performance'
   match '/employee/checkin', to: 'worktimes#create', via: :post
   match '/employee/checkout', to: 'worktimes#update', via: :post
 

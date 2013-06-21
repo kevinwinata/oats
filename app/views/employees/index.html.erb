@@ -1,5 +1,36 @@
+<% provide(:title, 'Employee List') %>
+<% provide(:description, 'dynamic') %>
+<% provide(:role, 'HR') %>
+
+<div class="sub-title">
+  <div>
+    <%= yield(:title) %>
+  </div>
+</div>
+
 <% if @employees.any? %>
-<%= @employees.count %>
-<%= render @employees %>
+<div class="left-big-div">
+    <table id="employee-table" border="1" class="list-table">
+      <tr>
+        <th>
+          Name
+        </th>
+        <th>
+          Email
+        </th>
+        <th>
+          Division
+        </th>
+        <th>
+          Office
+        </th>
+        <th>
+          Role
+        </th>
+        <th>
+        </th>
+      </tr>
+      <%= render @employees %>
+    </table>
+  </div>
 <% end %>
-<%= link_to "Add employee", '/employee/signup', method: "get" %>

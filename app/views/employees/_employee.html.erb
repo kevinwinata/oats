@@ -1,28 +1,55 @@
 <tr>
-	<td>
-		<input type="checkbox" name="cb1" value="cb1">
-	</td>
-	<td>
-		<%= employee.name %> 
-	</td>
-	<td>
-		<%= employee.email %>
-	</td>
-	<td>
-		<%= employee.division %> 
-	</td>
-	<%= form_for(employee) do |f| %>
-	<td>
-		<%= f.collection_select :office_id, company_current_user.offices, :id, :name %>
-	</td>
-	<td>
-		<%= f.select :role, {"Human Resource"=>true, "Employee"=>false}%>
-		
-	</td>
-	<td>
-		<%= f.submit "Save", class: "btn btn-primary" %>
+	<% if company_signed_in? %>
+		<td>
+			<input type="checkbox" name="cb1" value="cb1">
+		</td>
+		<td>
+			<%= employee.name %> 
+		</td>
+		<td>
+			<%= employee.email %>
+		</td>
+		<td>
+			<%= employee.division %> 
+		</td>
+		<%= form_for(employee) do |f| %>
+			<td>
+				<%= f.collection_select :office_id, company_current_user.offices, :id, :name %>
+			</td>
+			<td>
+				<%= f.select :role, {"Human Resource"=>true, "Employee"=>false}%>
+				
+			</td>
+			<td>
+				<%= f.submit "Save", class: "btn btn-primary" %>
+		<% end %>
+		<br>
+			<%= button_to "Fire", employee, :method => "delete" , :confirm => "You sure?" ,:class => "btn btn-primary" %>
+		</td>
+	<% else %>
+		<td>
+			<%= link_to employee.name, '/employee/performance/'+employee.id.to_s %> 
+		</td>
+		<td>
+			<%= employee.email %>
+		</td>
+		<td>
+			<%= employee.division %> 
+		</td>
+		<td>
+			<%= Office.find(employee.office_id).name %>
+		</td>
+		<td>
+			<% if employee.role %>
+				Human Resource
+			<% else %>
+				Employee
+			<% end %>
+		</td>
+		<td>
+			<%= link_to "edit", '/employee/edit_employee/'+employee.id.to_s %>
+			/
+			<%= link_to "reset password", '/employee/reset_pass/'+employee.id.to_s %>
+		</td>
 	<% end %>
-	<br>
-		<%= button_to "Fire", employee, :method => "delete" , :confirm => "You sure?" ,:class => "btn btn-primary" %>
-	</td>
 </tr>

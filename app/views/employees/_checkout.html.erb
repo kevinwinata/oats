@@ -18,6 +18,34 @@
 	</div>
 </div>
 <br/>
+<script>
+var latitude
+var longitude
+function getLocation()
+  {
+  if (navigator.geolocation)
+    {
+    navigator.geolocation.getCurrentPosition(showPosition);
+    }
+  else{alert("Geolocation is not supported by this browser.");}
+  }
+function showPosition(position)
+  {
+	latitude = position.coords.latitude;
+	longitude = position.coords.longitude;
+	document.check_out_form.latitude.value = latitude;
+	document.check_out_form.longitude.value = longitude;
+	document.check_out_form.submit()
+  }
+</script>
+
+<%= form_tag('/employee/checkout', :method => 'put', :name => "check_out_form") do %>
+  <%= hidden_field_tag(:latitude) %>
+
+  <%= hidden_field_tag(:longitude) %>
+<% end %>
+
+<button onclick="getLocation()">Checkout</button>
 <div class="opt-button">
 	<input type="button" id="checkout" value="Checkout" onclick="postLocation('PUT', '/employee/checkout')">
 </div>

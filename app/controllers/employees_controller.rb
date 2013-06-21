@@ -9,7 +9,9 @@ class EmployeesController < ApplicationController
   end
 
   def show
-    @timer = (Time.now - Worktime.find_by_employee_id(employee_current_user, :limit => 1, :order => 'created_at desc').checkin).to_i
+    unless Worktime.find_by_employee_id(employee_current_user, :limit => 1, :order => 'created_at desc').nil?
+      @timer = (Time.now - Worktime.find_by_employee_id(employee_current_user, :limit => 1, :order => 'created_at desc').checkin).to_i
+    end
     @employee = Employee.find(params[:id])
     @worktimes = @employee.worktimes
     @worktime = Worktime.find_by_employee_id(@employee, :limit => 1, :order => 'created_at desc')

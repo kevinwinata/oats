@@ -141,8 +141,10 @@ function checkDate(){
 }
 
 
-	var _latitude;
-	var _longitude;
+
+/*
+var _latitude;
+var _longitude;
 
 
 function showPosition(position)
@@ -165,9 +167,6 @@ function getLocation()
 
 function postLocation(method, action)
 {
-	getLocation();
-
-	
 
   	alert(method + action + _latitude + _longitude);
 
@@ -194,6 +193,7 @@ function postLocation(method, action)
     document.body.appendChild(form);
     form.submit();
 }
+*/
 
 /*function postLocation(method, action)
 {

@@ -8,6 +8,9 @@ describe "company pages" do
 
     before { visit '/company/signup' }
 
+    it { should have_selector('h1',    text: "Sign Up") }
+    it { should have_selector('title', text: "Sign Up") }
+
     let(:submit) { "Create my account" }
 
     describe "with invalid information" do
@@ -44,13 +47,13 @@ describe "company pages" do
 
     describe "page" do
       it { should have_selector('h1',    text: "Update company profile") }
-      it { should have_selector('title', text: "Edit company") }
+      it { should have_selector('title', text: "Edit Company Profile") }
     end
 
     describe "with invalid information" do
-      before { click_button "Save changes" }
+      before { click_button "Save" }
         it { should have_selector('h1',    text: "Update company profile") }
-        it { should have_selector('title', text: "Edit company") }
+        it { should have_selector('title', text: "Edit Company Profile") }
     end
 
     describe "with valid information" do
@@ -61,7 +64,7 @@ describe "company pages" do
         fill_in "Name",             with: "Adriel"
         fill_in "Password",         with: "4561237"
         fill_in "Confirm Password", with: "4561237"
-        click_button "Save changes"
+        click_button "Save"
       end
 
       it { should have_content("Adriel") }
@@ -78,7 +81,7 @@ describe "company pages" do
       fill_in "Password", with: company.password
       click_button "Sign in"
       cookies[:remember_company] = company.remember_company
-      @o1 = company.offices.build(latitude:-90,longitude:-180,name:"Blah")
+      @o1 = company.offices.build(latitude: -89, latitude_min: -90, latitude_max: -88.9,  longitude: -179, longitude_min: -180, longitude_max: -178.9, name: "Blah", range: 100)
       @o1.save
       @e1 = @o1.employees.build(email: "oteng@email.com", name: "Mario", division: "IT", mobile_number: "2378947283", password: "1234567", password_confirmation: "1234567")
       @e1.save

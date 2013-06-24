@@ -4,16 +4,16 @@
 
 <div class="sub-title">
   <div id="sub-title-bigtext">
-    Edit Company Profile
+    <h1>Update company profile</h1>
   </div>
   <div>
     <a href="edit_company_profile">edit</a>
   </div>
 </div>
 <div class="edit_company_profile_content">
-  <%= form_for(:session, url: "#") do |f| %>
+  <%= form_for(@company) do |f| %>
   <div class="edit_company_profile_component">  
-    <%= f.label :Name, :class=>"edit_label_company_profile" %>
+    <%= f.label :name, :class=>"edit_label_company_profile" %>
     <div class="edit_symbol_company_profile">:</div>
     <div id= "edit_company_profile_name">
         <%= f.text_field :name, :id=>"edit_company_profile_textfield" %>  
@@ -28,7 +28,7 @@
   </div>
 
   <div class="edit_company_profile_component">
-    <%= f.label :Contact, :class=>"edit_label_company_profile" %>
+    <%= f.label :contact, :class=>"edit_label_company_profile" %>
     <div class="edit_symbol_company_profile">:</div>
     <div id= "edit_company_profile_contact">
       <%= f.text_field :contact, :id=>"edit_company_profile_textfield" %> 
@@ -36,7 +36,7 @@
   </div>
 
   <div class="edit_company_profile_component">
-    <%= f.label :Password, :class=>"edit_label_company_profile" %>
+    <%= f.label :password, :class=>"edit_label_company_profile" %>
     <div class="edit_symbol_company_profile">:</div>
     <div id= "edit_company_profile_password">
       <%= f.text_field :contact, :id=>"edit_company_profile_textfield" %> 
@@ -44,7 +44,7 @@
   </div>
 
   <div class="edit_company_profile_component">
-    <%= f.label :Password_Confirmation, :class=>"edit_label_company_profile" %>
+    <%= f.label :passwordconfirmation, :class=>"edit_label_company_profile" %>
     <div class="edit_symbol_company_profile">:</div>
     <div id= "edit_company_profile_password_confirmation">
       <%= f.text_field :passwordconfirmation, :id=>"edit_company_profile_textfield" %>  

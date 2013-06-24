@@ -10,9 +10,14 @@ FactoryGirl.define do
   end
 
   factory :office do
-    latitude -90
-    longitude -180
+    latitude -89
+    latitude_min -90
+    latitude_max -88.9
+    longitude -179
+    longitude_min -180
+    longitude_max -178.9
     name "Blah"
+    range 100
     company
   end
 

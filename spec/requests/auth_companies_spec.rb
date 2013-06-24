@@ -7,8 +7,8 @@ describe "Authentication" do
   describe "signin page" do
     before { visit '/company/signin' }
 
-    it { should have_selector('h1',    text: 'Sign in') }
-    it { should have_selector('title', text: 'Sign in') }
+    it { should have_selector('h1',    text: 'Company Sign in') }
+    it { should have_selector('title', text: 'Company Sign in') }
   end
 
   describe "signin" do

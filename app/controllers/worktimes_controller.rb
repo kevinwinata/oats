@@ -1,5 +1,4 @@
 class WorktimesController < ApplicationController
-	before_filter :signed_in_employee
 
 	def create
 		if (params[:mobile_number].nil?)

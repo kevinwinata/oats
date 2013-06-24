@@ -1,7 +1,7 @@
 class EmployeesController < ApplicationController
-  before_filter :signed_in_employee, only: [:edit, :update, :index]
+  before_filter :signed_in_employee, only: [:edit, :update]
   before_filter :correct_employee,   only: [:edit]
-  before_filter :hr_employee,     only: [:index, :new_employee, :edit_employee, :create]
+  before_filter :hr_employee,     only: [:index, :new_employee, :edit_employee]
 
 
   def show

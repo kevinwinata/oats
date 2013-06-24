@@ -1,12 +1,8 @@
 class EmployeesController < ApplicationController
   before_filter :signed_in_employee, only: [:edit, :update, :index]
   before_filter :correct_employee,   only: [:edit, :update]
-  before_filter :hr_employee,     only: :index
+  before_filter :hr_employee,     only: [:index, :new_employee, :edit_employee, :create]
 
-  def new
-    @employee = Employee.new
-    cookies[:url] = request.fullpath
-  end
 
   def show
     unless Worktime.find_by_employee_id(employee_current_user, :limit => 1, :order => 'created_at desc').nil?
@@ -20,6 +16,7 @@ class EmployeesController < ApplicationController
   def index
     @company = Company.find_by_id(Office.find_by_id(employee_current_user.office_id).company_id)
     @employees = Employee.where("employees.office_id IN (SELECT offices.id FROM offices WHERE (company_id = ?))", @company.id)
+    cookies[:url] = request.fullpath
   end
 
   def create
@@ -27,13 +24,13 @@ class EmployeesController < ApplicationController
     if @employee.save
       if cookies[:url] == '/company/new_employee'
         redirect_to company_current_user
-      else
+      elsif cookies[:url] == '/employee/new_employee'
         redirect_to '/employees'
       end
     else
       if cookies[:url] == '/company/new_employee'
         redirect_to '/company/new_employee'
-      else
+      elsif cookies[:url] == '/employee/new_employee'
         render 'new'
       end
     end
@@ -42,6 +39,11 @@ class EmployeesController < ApplicationController
 
   def reset_pass
     @employee = Employee.find(params[:id])
+    cookies[:url] = request.fullpath
+  end
+
+  def new_employee
+    @employee = Employee.new
     cookies[:url] = request.fullpath
   end
 

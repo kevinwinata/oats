@@ -42,6 +42,7 @@ class WorktimesController < ApplicationController
 		    			end
 				    else
 				    	@offices = Office.where("company_id = ? AND id <> ?", @office.company_id, @office.id)
+				    	found = false;
 				    	@offices.each  do | o |
 				    		if (params[:latitude].to_f > o.latitude_min) && (params[:latitude].to_f < o.latitude_max &&
 				    			params[:longitude].to_f > o.longitude_min) && (params[:longitude].to_f < o.longitude_max)
@@ -51,10 +52,13 @@ class WorktimesController < ApplicationController
 				    			else
 				    				render :json => { :code => '503', :time => '0' }
 				    			end
+				    			found = true
 				    			break
 				    		end
 				    	end
-				    	render :json => { :code => '502', :time => '0' }
+				    	if !found
+				    		render :json => { :code => '502', :time => '0' }
+				    	end
 				    end
 				end
 			end
@@ -100,18 +104,22 @@ class WorktimesController < ApplicationController
 		    			end
 				    else
 				    	@offices = Office.where("company_id = ? AND id <> ?", @office.company_id, @office.id)
+				    	found = false
 				    	@offices.each  do | o |
 				    		if (params[:latitude].to_f > o.latitude_min) && (params[:latitude].to_f < o.latitude_max &&
 				    			params[:longitude].to_f > o.longitude_min) && (params[:longitude].to_f < o.longitude_max)
-								if @worktime.update_attribute('checkout',Time.now) && @worktime.update_attribute('place_checkout',@office.name)
+								if @worktime.update_attribute('checkout',Time.now) && @worktime.update_attribute('place_checkout',o.name)
 				    				render :json => { :code => '200', :time => Time.now }
 				    			else
 				    				render :json => { :code => '503', :time => '0' }
 				    			end
+				    			found = true
 				    			break
 				    		end
 				    	end
-				    	render :json => { :code => '502', :time => '0' }
+				    	if !found
+				    		render :json => { :code => '502', :time => '0' }
+				    	end
 				    end
 				end
 			end

@@ -1,5 +1,5 @@
 <tr>
-	<% if company_signed_in? %>
+	<% if company_signed_in? && request.fullpath.include?('/companies') %>
 		<td>
 			<input type="checkbox" name="cb1" value="cb1">
 		</td>
@@ -26,7 +26,7 @@
 		<br>
 			<%= button_to "Fire", employee, :method => "delete" , :confirm => "You sure?" ,:class => "btn btn-primary" %>
 		</td>
-	<% else %>
+	<% elsif employee_current_user.role? && request.fullpath.include?('/employees') %>
 		<td>
 			<%= link_to employee.name, '/employee/performance/'+employee.id.to_s %> 
 		</td>

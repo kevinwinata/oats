@@ -1,6 +1,6 @@
 class EmployeesController < ApplicationController
   before_filter :signed_in_employee, only: [:edit, :update, :index]
-  before_filter :correct_employee,   only: [:edit, :update]
+  before_filter :correct_employee,   only: [:edit]
   before_filter :hr_employee,     only: [:index, :new_employee, :edit_employee, :create]
 
 
@@ -71,6 +71,9 @@ class EmployeesController < ApplicationController
         @employee.update_attribute('division',params[:employee][:division])
         @employee.update_attribute('mobile_number',params[:employee][:mobile_number])
         @employee.update_attribute('office_id',params[:employee][:office_id])
+        if employee_current_user.id == @employee.id
+          employee_sign_in @employee
+        end
         redirect_to '/employees'
       else
         redirect_to :back

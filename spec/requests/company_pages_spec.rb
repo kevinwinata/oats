@@ -58,10 +58,10 @@ describe "company pages" do
 
     describe "with valid information" do
       before do
+        visit edit_company_path(company)
+        fill_in "Name",             with: "Adriel"
         fill_in "Address",          with: "sdkfklasfjaofjioa"
         fill_in "Contact",          with: "893437"
-        fill_in "Email",            with: "sun@dragoon.com"
-        fill_in "Name",             with: "Adriel"
         fill_in "Password",         with: "4561237"
         fill_in "Confirm Password", with: "4561237"
         click_button "Save"
@@ -85,7 +85,7 @@ describe "company pages" do
       @o1.save
       @e1 = @o1.employees.build(email: "oteng@email.com", name: "Mario", division: "IT", mobile_number: "2378947283", password: "1234567", password_confirmation: "1234567")
       @e1.save
-      @o2 = company.offices.build(latitude:-90,longitude:-180,name:"Shit")
+      @o2 = company.offices.build(latitude: -89, latitude_min: -90, latitude_max: -88.9,  longitude: -179, longitude_min: -180, longitude_max: -178.9, name: "Shit", range: 100)
       @o2.save
       @e2 = @o2.employees.build(email: "abc@email.com", name: "Abc", division: "IT", mobile_number: "237894283", password: "1234567", password_confirmation: "1234567")
       @e2.save
@@ -114,7 +114,7 @@ describe "company pages" do
 
     describe "delete employees" do
       it "should delete an employee" do
-        expect { click_link('fire') }.to change(Employee, :count).by(-1)
+        expect { click_link('delete') }.to change(Employee, :count).by(-1)
       end
     end
 

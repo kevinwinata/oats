@@ -2,16 +2,16 @@
 <%= form_for office do |f| %>
   <div class="field">
     <%= f.label :name %>
-    <%= f.text_field :name %>
+    <%= f.text_field :office_name %>
 
     <%= f.label :latitude %>
-    <%= f.text_field :latitude %>
+    <%= f.text_field :office_latitude %>
 
     <%= f.label :longitude %>
-    <%= f.text_field :longitude %>
+    <%= f.text_field :office_longitude %>
 
     <%= f.label :range %>
-    <%= f.text_field :range %>
+    <%= f.text_field :office_range %>
   </div>
   <%= f.submit "Save", class: "btn btn-large btn-primary" %>
 <% end %>
